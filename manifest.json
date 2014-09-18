@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Has AngularJS",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "page_action": {
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_title": "Has angular JS"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
