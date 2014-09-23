@@ -3,15 +3,26 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   console.log('Changed', changeInfo.url);
 
-  //chrome.tabs.executeScript({
-  //  code: 'document.body.style.backgroundColor="red"'
-  //});
+  setTimeout(function() {
+    console.log(tabId);
 
-  var details = {
-    tabId: tabId,
-    path: 'icon38.png'
-  };
-  chrome.pageAction.setIcon(details, function() {
-    console.log('done');
-  });
+    chrome.tabs.executeScript(tabId,
+        {code: "window.angular.version.full"},
+        function(results) {
+          if (!results) {
+            return;
+          }
+
+          console.log(results[0]);
+        });
+    //  chrome.tabs.executeScript(tabId, {
+    //    code: '1',
+    //    runAt: 'document_idle'
+    //  }, function(result) {
+    //    console.log(result);
+    //  });
+    //}, 1000);
+
+    chrome.pageAction.show(tabId);
+  }, 3000);
 });
